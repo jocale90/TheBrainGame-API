@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Theme extends Model
 {
-    use HasFactory;
+        use HasFactory;
+
+        protected $fillable = ['name', 'id_in_s3', 'background_image'];
+
+        /*         public function cards()
+        {
+            return $this->hasMany(Card::class);
+        } */
 }
