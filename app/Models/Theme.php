@@ -9,10 +9,10 @@ class Theme extends Model
 {
         use HasFactory;
 
-        protected $fillable = ['name', 'id_in_s3', 'background_image'];
-
-        /*         public function cards()
-        {
-            return $this->hasMany(Card::class);
-        } */
+        protected $fillable = [
+            'name',
+            'id_in_s3',
+            'background_image',
+            'card_background',
+        ];
 }

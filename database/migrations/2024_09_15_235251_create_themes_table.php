@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('id_in_s3'); 
             $table->string('background_image');
+            $table->string('card_background');
             $table->timestamps();
         });
     }

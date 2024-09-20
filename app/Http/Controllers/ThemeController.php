@@ -22,10 +22,11 @@ class ThemeController extends Controller
         // Obtener las imágenes desde la carpeta de S3 correspondiente al theme_id
         $files = Storage::disk('s3')->files("themes/{$theme->id_in_s3}");
     
-        // Filtrar la imagen de fondo para no incluirla en las imágenes
+        // Filtrar la imagen de fondo y la de backgroundcard para no incluirlas en las imágenes
         $imageUrls = array_filter($files, function ($file) use ($theme) {
-            return !str_ends_with($file, 'background.png');
+            return !str_ends_with($file, 'background.png') && !str_ends_with($file, 'backgroundcard.png');
         });
+
     
         // Generar las URLs de las imágenes
         $imageUrls = array_map(function ($file) {
@@ -35,7 +36,8 @@ class ThemeController extends Controller
         return response()->json([
             'theme' => $theme->name,
             'images' => $imageUrls,
-            'backgroundImage' => $theme->background_image
+            'backgroundImage' => $theme->background_image,
+            'backgroundCard' => $theme->card_background,
         ]);
     }
 
